@@ -95,7 +95,9 @@ def main():
         raise RuntimeError("No Benchmark found!")
 
     for namespace, benchmark in benchmarks:
-        ssg.build_derivatives.profile_handling(benchmark, namespace)
+        # Build for derivatives all the profiles, not only for standard ones:
+        #   standard_profiles = ['standard', 'pci-dss', 'desktop', 'server']
+        # ssg.build_derivatives.profile_handling(benchmark, namespace)
         if not ssg.build_derivatives.add_cpes(benchmark, namespace, mapping):
             raise RuntimeError(
                 "Could not add derivative OS CPEs to Benchmark '%s'."
